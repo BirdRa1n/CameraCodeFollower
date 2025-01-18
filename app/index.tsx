@@ -6,6 +6,7 @@ import Animated, { Easing, useSharedValue, useAnimatedStyle, withTiming } from '
 export default function Camera() {
     const [facing, setFacing] = useState<CameraType>('back');
     const [permission, requestPermission] = useCameraPermissions();
+    const [scannedData, setScannedData] = useState<{ type: string; content: string } | null>(null);
 
     // Valores compartilhados para animação
     const x = useSharedValue(0);
@@ -43,6 +44,9 @@ export default function Camera() {
                 scale.value = withTiming(1, { duration: 300, easing: Easing.inOut(Easing.ease) });
             }, 300);
         }
+
+        // Atualiza o estado com os dados do código escaneado
+        setScannedData({ type: data.type, content: data.data });
     }
 
     // Verifica permissões da câmera
@@ -70,6 +74,13 @@ export default function Camera() {
                 {/* Cubo animado */}
                 <Animated.View style={[styles.cube, animatedStyle]} />
             </CameraView>
+            {/* Exibição dos dados do código escaneado */}
+            {scannedData && (
+                <View style={styles.infoContainer}>
+                    <Text style={styles.infoText}>Type: {scannedData.type}</Text>
+                    <Text style={styles.infoText}>Content: {scannedData.content}</Text>
+                </View>
+            )}
         </View>
     );
 }
@@ -106,6 +117,19 @@ const styles = StyleSheet.create({
         position: 'absolute',
         borderWidth: 3,
         borderColor: 'white',
-        borderRadius: 10
+        borderRadius: 10,
+    },
+    infoContainer: {
+        position: 'absolute',
+        bottom: 100,
+        left: 20,
+        right: 20,
+        padding: 10,
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        borderRadius: 5,
+    },
+    infoText: {
+        color: 'white',
+        fontSize: 16,
     },
 });
