@@ -2,6 +2,10 @@
 
 Este é um projeto [Expo](https://expo.dev) criado com [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+## Você pode testar esse projeto diretamente pelo Expo GO
+
+[Clique aqui](https://expo.dev/preview/update?message=Update%20index.tsx%0A%0AAdicionando%20um%20view%20contendo%20o%20tipo%20e%20valor%20do%20c%C3%B3digo%20escaneado&updateRuntimeVersion=1.0.0&createdAt=2025-01-18T00%3A39%3A42.164Z&slug=exp&projectId=989f954a-abee-4a3c-948b-5adbb89ce827&group=b2d355cb-3b4f-46b1-aed5-8e443fd7e154)
+
 ## Comece agora
 
 1. Instale as dependências
